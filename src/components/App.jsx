@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import InputArea from "./InputArea";
 import ToDoItem from "./ToDoItem";
 
 function App() {
@@ -48,12 +49,12 @@ function App() {
         <div className="heading">
           <h1>To-Do List</h1>
         </div>
-        <div className="form">
-          <input onChange={handleChange} type="text" value={inputText} />
-          <button onClick={addItem}>
-            <span>Add</span>
-          </button>
-        </div>
+        <InputArea
+          key={"uuid"}
+          text={inputText}
+          addItem={addItem}
+          handleChange={handleChange}
+        />
         <div>
           <ul>
             {items.map((todoItem, index) => (
