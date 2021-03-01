@@ -3,21 +3,8 @@ import InputArea from "./InputArea";
 import ToDoItem from "./ToDoItem";
 
 function App() {
-  const [inputText, setInputText] = useState("");
   const [items, setItems] = useState([]);
   const [completedItems, setCompleteItems] = useState([]);
-
-  function handleChange(event) {
-    const newValue = event.target.value;
-    setInputText(newValue);
-  }
-
-  function addItem() {
-    setItems((prevItems) => {
-      return [...prevItems, inputText];
-    });
-    setInputText("");
-  }
 
   function handleTaskCompleted(index) {
     var newItemList = items.filter((item, idx) => {
@@ -49,12 +36,7 @@ function App() {
         <div className="heading">
           <h1>To-Do List</h1>
         </div>
-        <InputArea
-          key={"uuid"}
-          text={inputText}
-          addItem={addItem}
-          handleChange={handleChange}
-        />
+        <InputArea key={"uuid"} setItems={setItems} />
         <div>
           <ul>
             {items.map((todoItem, index) => (
